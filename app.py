@@ -7,7 +7,6 @@ from transformers import pipeline, T5Tokenizer
 
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Ensure this is set for session management
 
 # Load NLP models
 nlp = spacy.load("en_core_web_sm")
@@ -66,7 +65,7 @@ def generate_questions_with_topic(chunks, topics, qg_pipeline, tokenizer):
         outputs = qg_pipeline(
             truncated_input,
             max_length=64,
-            num_return_sequences=1,  # Generate one question per input
+            num_return_sequences=1,
         )
         for output in outputs:
             question = output['generated_text']
@@ -79,7 +78,6 @@ def process_pdf(pdf_file):
     for i, chunk in enumerate(text_chunks):
         sections = split_by_sections(chunk)
         for j, section in enumerate(sections):
-            # Use the extract_relevant_sentences function here
             relevant_sentences = extract_relevant_sentences(section)
             if relevant_sentences:
                 segmented = segment_by_topics(relevant_sentences)

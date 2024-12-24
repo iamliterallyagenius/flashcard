@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="text-center">Upload a PDF to Generate Flashcards</h1>
+        
+        <!-- Form to upload PDF -->
+        <form action="/" method="POST" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
+            <div class="mb-3">
+                <input type="file" name="file" accept=".pdf" required class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        
+        <!-- Display extracted text (for now) -->
+        {% if text %}
+            <h2 class="text-center">Extracted Text from PDF:</h2>
+            <pre class="text-center">{{ text }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Flashcards{% endblock %}
+
+{% block header %}
+<div class="text-center mb-4">
+    <h1 class="display-4">Flashcards</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="flashcard-container d-flex justify-content-center align-items-center flex-wrap">
+    {% if flashcards %}
+        {% for question, answer, score in flashcards %}
+            <div class="flashcard card m-3" style="width: 18rem;" onclick="flipCard(this)">
+                <div class="front card-body">
+                    <strong>Q:</strong> {{ question }}
+                </div>
+                <div class="back card-body">
+                    <strong>A:</strong> {{ answer }}<br>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center">No flashcards available. Please upload a PDF first.</p>
+    {% endif %}
+</div>
+<div class="d-flex justify-content-between mt-4">
+    <button id="prevButton" class="btn btn-primary" onclick="previousCard()">← Previous Flashcard</button>
+    <button id="nextButton" class="btn btn-primary" onclick="nextCard()">Next Flashcard →</button>
+</div>
+<div class="text-center mt-5">
+    <a href="{{ url_for('index') }}" class="btn btn-outline-primary btn-lg">Upload Another PDF</a>
+</div>
+{% endblock %}

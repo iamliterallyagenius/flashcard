@@ -14,7 +14,7 @@ Flashcard APP is a simple and efficient tool designed to help you create persona
 - **HTML/CSS/JavaScript** - For frontend development and app interactivity.
 
 ## Screenshots
-![Screenshot 1](master/image.png)
+![Screenshot 1](image.png)
 
 ## License
 *No license specified.*
